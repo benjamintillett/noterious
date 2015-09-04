@@ -4,8 +4,9 @@
       to ctrl.setEditedBoard via ng-click – that way, you will
       be able to actually see the editing form when you click on a board.
       -->
-    <div
-      class="simple-board">
+    <div class="simple-board" ng-repeat='(index,board) in ctrl.boards' ng-click='ctrl.setEditedBoard(index,board)'>
+      <h4>{{ board.title }}</h4>
+      {{ board.description }}      
     </div>
 
   </div>
@@ -19,7 +20,23 @@
       name="ctrl.createForm"
       class="create-form"
       role="form"
+      ng-submit="ctrl.createBoard(ctrl.newBoard, true)"
       novalidate>
+      <div class="form-group">
+        <input class="form-control" type="text"
+          ng-model='ctrl.newBoard.title'
+          ng-minlength='3'
+        >
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text"
+          ng-model='ctrl.newBoard.description'
+          ng-minlength='3'
+        >
+      </div>
+      <div class='form-group'>
+        <button class="btn btn-default" type="submit">Submit</button>        
+      </div>
     </form>
   </div>
   <!-- EDITING -->
@@ -27,10 +44,26 @@
     <h3>Editing {{ ctrl.editedBoard.title }}</h3>
     <hr/>
     <form
-      name="ctrl.updateForm"
+      name="ctrl.editForm"
       class="edit-form"
       role="form"
+      ng-submit="ctrl.updateBoard(ctrl.editedBoardId,ctrl.editedBoard,true)"
       novalidate>
+      <div class="form-group">
+        <input class="form-control" type="text"
+          ng-model='ctrl.editedBoard.title'
+          ng-minlength='3'
+        >
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text"
+          ng-model='ctrl.editedBoard.description'
+          ng-minlength='3'
+        >
+      </div>
+      <div class='form-group'>
+        <button class="btn btn-default" type="submit">Submit</button>        
+      </div>
     </form>
   </div>
 </div>

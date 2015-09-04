@@ -44,7 +44,8 @@ angular.module('noterious')
     ctrl.createBoard = function (board, isValid) {
       if (isValid) {
         ctrl.loading = true;
-        // CREATE BOARD
+        var boardCount = Object.keys(ctrl.boards).length;
+        ctrl.boards[boardCount + 1] = board;
         ctrl.resetForm();
       }
     };
@@ -52,7 +53,7 @@ angular.module('noterious')
     ctrl.updateBoard = function (boardId, board, isValid) {
       if (isValid) {
         ctrl.loading = true;
-        // UPDATE BOARD
+        ctrl.boards[boardId] = board;
         ctrl.cancelEditing();
       }
     };
