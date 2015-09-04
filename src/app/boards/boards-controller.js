@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('noterious')
-  .controller('BoardsCtrl', function (currentUser, BoardsModel) {
+  .controller('BoardsCtrl', function () {
     var ctrl = this;
 
     ctrl.loading = false;
