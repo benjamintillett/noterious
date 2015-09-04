@@ -14,7 +14,11 @@ angular.module('noterious')
       isPublic: false
     };
 
-    ctrl.boards = BoardsModel.all();
+    ctrl.getBoards = function(){
+	    BoardsModel.all().then(function(boards){
+	    	ctrl.boards = boards
+	    });
+	}
     
     ctrl.resetForm = function () {
       ctrl.loading = false;
@@ -29,7 +33,10 @@ angular.module('noterious')
     ctrl.createBoard = function (board, isValid) {
       if (isValid) {
         ctrl.loading = true;
-        BoardsModel.create(board)
+        BoardsModel.create(board).then(function(response){
+        	ctrl.getBoards();
+        });
+
         ctrl.resetForm();
       }
     };
@@ -65,4 +72,5 @@ angular.module('noterious')
       ctrl.isEditing = false;
     };
 
+    ctrl.getBoards();
   });
