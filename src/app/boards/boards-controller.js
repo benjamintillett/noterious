@@ -13,14 +13,9 @@ angular.module('noterious')
       description: '',
       isPublic: false
     };
-    BoardsModel.getBoards().then(function(boards){
-    	ctrl.boards = boards;
-    }).catch(function(error){
-    	console.log(error);
-    }).finally(function(){
-    	console.log("we have the boards");
-    });
 
+    ctrl.boards = BoardsModel.all();
+    
     ctrl.resetForm = function () {
       ctrl.loading = false;
       ctrl.newBoard = {
@@ -34,7 +29,7 @@ angular.module('noterious')
     ctrl.createBoard = function (board, isValid) {
       if (isValid) {
         ctrl.loading = true;
-        // CREATE BOARD
+        BoardsModel.create(board)
         ctrl.resetForm();
       }
     };
