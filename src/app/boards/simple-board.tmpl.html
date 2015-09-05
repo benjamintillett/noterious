@@ -1,0 +1,19 @@
+<div
+  class="simple-board"
+  ng-click="ctrl.setEditedBoard(boardId, board)"
+  ng-class="{
+    'active': ctrl.isCurrentBoard(boardId)
+  }">
+  <button
+    type="button"
+    class="close"
+    ng-click="ctrl.deleteBoard(boardId)">
+    &times;
+  </button>
+
+  <h3>{{ board.title }}</h3>
+
+  <p>
+    <strong>{{ board.description }}</strong>
+  </p>
+</div>
