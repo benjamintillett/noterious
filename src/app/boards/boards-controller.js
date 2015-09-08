@@ -3,7 +3,7 @@
 angular.module('noterious')
   .controller('BoardsCtrl', function (currentUser, BoardsModel) {
     var ctrl = this;
-
+    console.log("Welcomoe to the boards controller");
     ctrl.loading = false;
 
     ctrl.newBoard = {
@@ -33,7 +33,7 @@ angular.module('noterious')
     ctrl.createBoard = function (board, isValid) {
       if (isValid) {
         ctrl.loading = true;
-
+        console.log("sdakfjasldkfj");
         BoardsModel.create(board)
           .then(function (result) {
             ctrl.getBoards();

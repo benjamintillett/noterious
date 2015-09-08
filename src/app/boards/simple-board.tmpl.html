@@ -1,4 +1,9 @@
-<div>
+<div
+  class="simple-board"
+  ng-click="ctrl.setEditedBoard(boardId, board)"
+  ng-class="{
+    'active': ctrl.isCurrentBoard(boardId)
+  }">
   <button
     type="button"
     class="close"
@@ -11,5 +16,4 @@
   <p>
     <strong>{{ board.description }}</strong>
   </p>
-  <a href='#' ui-sref='notes({boardId: boardId})'>Notes</a>
 </div>

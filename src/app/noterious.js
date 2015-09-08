@@ -28,6 +28,17 @@ angular.module('noterious', [
           }]
         }
       })
+      .state('notes',{
+        url: '/notes/:boardId',
+        templateUrl: 'app/notes/notes-mdv.tmpl.html',
+        controller: 'NotesCtrl',
+        controllerAs: 'notesCtrl',
+        resolve: {
+          'currentUser': ['Auth', function (Auth) {
+            return Auth.$requireAuth();
+          }]
+        }
+      })
     ;
   })
   .run(function ($rootScope, $state) {
